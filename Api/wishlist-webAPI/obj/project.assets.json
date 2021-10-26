@@ -7530,19 +7530,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\henri\\.nuget\\packages\\": {}
+    "C:\\Users\\Batat\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Wishlist-Senai\\Api\\wishlist-webAPI\\wishlist-webAPI.csproj",
+      "projectUniqueName": "C:\\Users\\Batat\\Desktop\\Wishlist-Senai-G9\\Api\\wishlist-webAPI\\wishlist-webAPI.csproj",
       "projectName": "wishlist-webAPI",
-      "projectPath": "D:\\Wishlist-Senai\\Api\\wishlist-webAPI\\wishlist-webAPI.csproj",
-      "packagesPath": "C:\\Users\\henri\\.nuget\\packages\\",
-      "outputPath": "D:\\Wishlist-Senai\\Api\\wishlist-webAPI\\obj\\",
+      "projectPath": "C:\\Users\\Batat\\Desktop\\Wishlist-Senai-G9\\Api\\wishlist-webAPI\\wishlist-webAPI.csproj",
+      "packagesPath": "C:\\Users\\Batat\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Batat\\Desktop\\Wishlist-Senai-G9\\Api\\wishlist-webAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\henri\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Batat\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
