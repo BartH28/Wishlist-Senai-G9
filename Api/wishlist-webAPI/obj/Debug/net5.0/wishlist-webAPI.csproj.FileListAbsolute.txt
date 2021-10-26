@@ -125,7 +125,6 @@ C:\Users\Batat\Desktop\Wishlist-Senai-G9\Api\wishlist-webAPI\obj\Debug\net5.0\st
 C:\Users\Batat\Desktop\Wishlist-Senai-G9\Api\wishlist-webAPI\obj\Debug\net5.0\staticwebassets\wishlist-webAPI.StaticWebAssets.xml
 C:\Users\Batat\Desktop\Wishlist-Senai-G9\Api\wishlist-webAPI\obj\Debug\net5.0\scopedcss\bundle\wishlist-webAPI.styles.css
 C:\Users\Batat\Desktop\Wishlist-Senai-G9\Api\wishlist-webAPI\obj\Debug\net5.0\wishlist-webAPI.RazorTargetAssemblyInfo.cache
-C:\Users\Batat\Desktop\Wishlist-Senai-G9\Api\wishlist-webAPI\obj\Debug\net5.0\wishlist-webAPI.csproj.CopyComplete
 C:\Users\Batat\Desktop\Wishlist-Senai-G9\Api\wishlist-webAPI\obj\Debug\net5.0\wishlist-webAPI.dll
 C:\Users\Batat\Desktop\Wishlist-Senai-G9\Api\wishlist-webAPI\obj\Debug\net5.0\ref\wishlist-webAPI.dll
 C:\Users\Batat\Desktop\Wishlist-Senai-G9\Api\wishlist-webAPI\obj\Debug\net5.0\wishlist-webAPI.pdb
