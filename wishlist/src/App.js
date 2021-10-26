@@ -7,6 +7,7 @@ class App extends Component{
       this.state = {
        listaDesejos: [],
        descricao: '',
+       usuario: ''
       }
   };
 
@@ -23,7 +24,7 @@ cadastrarDesejos = (desejo) => {
 
   fetch('http://localhost:5000/api/desejo', {
       method: 'POST', 
-      body: JSON.stringify({ descricao : this.state.descricao}),
+      body: JSON.stringify({ descricao : this.state.descricao, usuario : this.state.usuario}),
       headers :{
           "Content-Type" : "application/json"
       }
@@ -35,16 +36,104 @@ cadastrarDesejos = (desejo) => {
   .then(this.setState({ descricao: ''}))
 }
 
+atualizar = async (desejo) => {
+  await this.setState({  
+    descricao : desejo.target.value   
+  })
+  console.log(this.state.descricao);
+ }
+
+ atualizarId = async (desejo) => {
+  await this.setState({  
+    usuario : desejo.target.value   
+  })
+  console.log(this.state.usuario);
+ }
+
 componentDidMount(){
   this.buscarDesejos()
 }
 
 
   render() {
-    return(<div>
-      <h1>WishList</h1>
-      </div>
-      )
+    return(
+      <div>
+       <header>
+        <div class="ContainerGrid ContainerHeader">
+            <div class="Logotipo">
+                <img src="src/assets/splotch-solid 1.png" />
+                <span>WishList</span>
+            </div>
+            <nav>
+                <a>Home</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="Banner">
+            <div class="ContainerGrid ContainerBanner">
+                <h1>WishList</h1>
+                <span>Defina seus sonhos,
+                    desejos e objetivos
+                    para o futuro!</span>
+            </div>
+        </section>
+        <section class="Cadastro">
+            <div class="ContainerGrid ContainerCadastro">
+                <h2>Cadastro</h2>
+                <form class="FormularioCadastro" onSubmit={this.cadastrarDesejos} >
+                    <div class="CamposFormulario">
+                        <div class="CampoFormCadastro">
+                            <label>Descrição</label>
+                            <input type="text" value={ this.state.descricao } onChange={this.atualizar} />
+                        </div>
+                        <div class="CampoFormCadastro">
+                            <label>Usuário</label>
+                            <select value={ this.state.usuario } onChange={this.atualizarId}></select>
+                        </div>
+                    </div>
+                    <button class="FormSubmit" type="submit">Cadastrar</button>
+                </form>
+            </div>
+        </section>
+        <section class="Lista">
+            <div class="ContainerLista ContainerGrid">
+                <h2>Desejos</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Desejo</th>
+                            <th>Sonhador</th>
+                            <th>Data</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {
+                    this.state.listaDesejos.map((desejo) => {
+                      return(
+                        <tr key={desejo.idDesejo}> 
+                        <td>{desejo.descricao}</td>
+                        <td>{desejo.idUsuario}</td>
+                        <td>{desejo.dataDesejo}</td>
+                        </tr>
+                     )
+                    })
+                  }
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="ContainerGrid ContainerFooter">
+            <div class="Logotipo">
+                <span>WishList</span>
+                <img src='src/assets_/splotch-solid 1 png' />
+            </div>
+        </div>
+    </footer>
+        </div>    
+  )
   }
 
 }
