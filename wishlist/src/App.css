@@ -106,7 +106,7 @@ main{
 }
 
 .Banner{
-    background: linear-gradient(0deg, rgba(72, 104, 255, 0.1), rgba(72, 104, 255, 0.1)), url(assets_/the-beautiful-shining-stars-in-the-night-sky.jpg);
+    background: linear-gradient(0deg, rgba(72, 104, 255, 0.1), rgba(72, 104, 255, 0.1)), url(assets/the-beautiful-shining-stars-in-the-night-sky.jpg);
     background-size: cover;
     height: 400px;
     margin-bottom: 150px;

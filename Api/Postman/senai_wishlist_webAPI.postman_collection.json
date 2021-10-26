@@ -53,6 +53,27 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Desejo.Deletar",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/desejo/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"desejo",
+						"6"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

@@ -18,9 +18,20 @@ namespace wishlist_webAPI.Repositories
             ctx.SaveChanges();
         }
 
+        public void Deletar(short id)
+        {
+            Desejo desejoBuscado = ctx.Desejos.Find(id);
+
+            ctx.Desejos.Remove(desejoBuscado);
+
+            ctx.SaveChanges();
+        }
+
         public List<Desejo> Listar()
         {
             return ctx.Desejos.ToList();
         }
+
+        
     }
 }

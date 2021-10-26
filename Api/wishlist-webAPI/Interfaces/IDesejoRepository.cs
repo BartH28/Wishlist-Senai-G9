@@ -10,5 +10,6 @@ namespace wishlist_webAPI.Interfaces
     {
         List<Desejo> Listar();
         void Cadastrar(Desejo novoDesejo);
+        void Deletar(short id);
     }
 }

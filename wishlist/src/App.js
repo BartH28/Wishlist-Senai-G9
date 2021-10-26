@@ -50,6 +50,23 @@ atualizar = async (desejo) => {
   console.log(this.state.usuario);
  }
 
+ excluirDesejo = (item) => {
+  console.log('O desejo' + item.idDesejo + 'foi selecionado');
+  fetch('http://localhost:5000/api/desejo/' + item.idDesejo, {
+      method: 'DELETE', 
+})
+
+.then(resposta => {
+  if(resposta.status === 204){
+     console.log(
+         'O desejo' + item.idDesejo + 'foi excluído com sucesso.'
+     )
+  }
+})
+.catch(erro => console.log(erro))
+.then(this.buscarDesejos);
+};
+
 componentDidMount(){
   this.buscarDesejos()
 }
@@ -105,6 +122,7 @@ componentDidMount(){
                             <th>Desejo</th>
                             <th>Sonhador</th>
                             <th>Data</th>
+                            <th>Desistir</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -115,6 +133,7 @@ componentDidMount(){
                         <td>{desejo.descricao}</td>
                         <td>{desejo.idUsuario}</td>
                         <td>{desejo.dataDesejo}</td>
+                        <td><button onClick={() => this.excluirDesejo(desejo)}><img src='src/assets/trash.ico'/></button></td>
                         </tr>
                      )
                     })

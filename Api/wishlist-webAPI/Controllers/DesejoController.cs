@@ -48,5 +48,19 @@ namespace wishlist_webAPI.Controllers
                 return BadRequest(ex);
             }
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(short id)
+        {
+            try
+            {
+                _DesejoRepository.Deletar(id);
+                return StatusCode(204);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
     }
 }
