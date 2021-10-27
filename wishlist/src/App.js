@@ -27,7 +27,7 @@ cadastrarDesejos = (desejo) => {
 
   fetch('http://localhost:5000/api/desejo', {
       method: 'POST', 
-      body: JSON.stringify({ descricao : this.state.descricao, idUsuario: this.state.idUsuario}),
+      body: JSON.stringify({ descricao : this.state.descricao, idUsuario: this.state.idUsuario, dataDesejo: new Date()}),
       headers :{
           "Content-Type" : "application/json"
       }
@@ -139,7 +139,7 @@ componentDidMount(){
                         <tr key={desejo.idDesejo}> 
                         <td>{desejo.descricao}</td>
                         <td>{desejo.idUsuarioNavigation.email}</td>
-                        <td>{desejo.dataDesejo}</td>
+                        <td>{new Intl.DateTimeFormat('pt-BR', {timeZone: 'UTC'}).format(new Date(desejo.dataDesejo))}</td>
                         <td><button onClick={() => this.excluirDesejo(desejo)}><img src={icon} alt={"icon"} className="icon"/></button></td>
                         </tr>
                      )
