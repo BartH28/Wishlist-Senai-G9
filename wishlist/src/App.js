@@ -7,7 +7,6 @@ class App extends Component{
       this.state = {
        listaDesejos: [],
        descricao: '',
-       usuario: ''
       }
   };
 
@@ -24,7 +23,7 @@ cadastrarDesejos = (desejo) => {
 
   fetch('http://localhost:5000/api/desejo', {
       method: 'POST', 
-      body: JSON.stringify({ descricao : this.state.descricao, usuario : this.state.usuario}),
+      body: JSON.stringify({ descricao : this.state.descricao}),
       headers :{
           "Content-Type" : "application/json"
       }
@@ -41,13 +40,6 @@ atualizar = async (desejo) => {
     descricao : desejo.target.value   
   })
   console.log(this.state.descricao);
- }
-
- atualizarId = async (desejo) => {
-  await this.setState({  
-    usuario : desejo.target.value   
-  })
-  console.log(this.state.usuario);
  }
 
  excluirDesejo = (item) => {
@@ -71,14 +63,13 @@ componentDidMount(){
   this.buscarDesejos()
 }
 
-
   render() {
     return(
       <div>
        <header>
         <div class="ContainerGrid ContainerHeader">
             <div class="Logotipo">
-                <img src="src/assets/splotch-solid 1.png" />
+                <img src="/assets/splotch-solid 1.png" />
                 <span>WishList</span>
             </div>
             <nav>
@@ -102,11 +93,11 @@ componentDidMount(){
                     <div class="CamposFormulario">
                         <div class="CampoFormCadastro">
                             <label>Descrição</label>
-                            <input type="text" value={ this.state.descricao } onChange={this.atualizar} />
+                            <input type="text" value={ this.state.descricao} onChange={this.atualizar} />
                         </div>
                         <div class="CampoFormCadastro">
                             <label>Usuário</label>
-                            <select value={ this.state.usuario } onChange={this.atualizarId}></select>
+                            <select></select>
                         </div>
                     </div>
                     <button class="FormSubmit" type="submit">Cadastrar</button>
@@ -131,9 +122,9 @@ componentDidMount(){
                       return(
                         <tr key={desejo.idDesejo}> 
                         <td>{desejo.descricao}</td>
-                        <td>{desejo.idUsuario}</td>
+                        <td>{desejo.idUsuarioNavigation.email}</td>
                         <td>{desejo.dataDesejo}</td>
-                        <td><button onClick={() => this.excluirDesejo(desejo)}><img src='src/assets/trash.ico'/></button></td>
+                        <td><button onClick={() => this.excluirDesejo(desejo)}><img src='../src/assets/trash.ico'/></button></td>
                         </tr>
                      )
                     })
