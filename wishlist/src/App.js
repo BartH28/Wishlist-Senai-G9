@@ -1,4 +1,6 @@
 import './App.css';
+import logo from '../src/assets/splotch-solid 1.png'
+import icon from '../src/assets/trash.ico'
 import {Component} from "react";
 
 class App extends Component{
@@ -69,7 +71,7 @@ componentDidMount(){
        <header>
         <div class="ContainerGrid ContainerHeader">
             <div class="Logotipo">
-                <img src="/assets/splotch-solid 1.png" />
+                <img src={logo} alt={"star"} />
                 <span>WishList</span>
             </div>
             <nav>
@@ -113,7 +115,7 @@ componentDidMount(){
                             <th>Desejo</th>
                             <th>Sonhador</th>
                             <th>Data</th>
-                            <th>Desistir</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -124,7 +126,7 @@ componentDidMount(){
                         <td>{desejo.descricao}</td>
                         <td>{desejo.idUsuarioNavigation.email}</td>
                         <td>{desejo.dataDesejo}</td>
-                        <td><button onClick={() => this.excluirDesejo(desejo)}><img src='../src/assets/trash.ico'/></button></td>
+                        <td><button onClick={() => this.excluirDesejo(desejo)}><img src={icon} alt={"icon"} className="icon"/></button></td>
                         </tr>
                      )
                     })
@@ -138,7 +140,7 @@ componentDidMount(){
         <div class="ContainerGrid ContainerFooter">
             <div class="Logotipo">
                 <span>WishList</span>
-                <img src='src/assets_/splotch-solid 1 png' />
+                <img src={logo} alt={"star"} />
             </div>
         </div>
     </footer>
