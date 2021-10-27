@@ -10,7 +10,18 @@ class App extends Component{
        listaDesejos: [],
        descricao: '',
        data: Date,
-       idUsuario: 0
+       idUsuario: 0,
+       // tentativa desafio 2 abaixo
+
+       idUsuarioLista: 0,
+
+       // tentativa desafio 2 acima
+
+       // tentativa desafio 3 abaixo
+
+        msgErro: ''
+
+        // tentativa desafio 2 acima
       }
   };
 
@@ -34,9 +45,10 @@ cadastrarDesejos = (desejo) => {
   })
   
   .then(console.log("desejo cadastrado."))
-  .catch(erro => console.log(erro))  
+  .catch(erro => this.setState({msgErro: erro}))  //retorno do catch: tentativa desafio 3
   .then(this.buscarDesejos)
-  .then(this.setState({ descricao: ''})) 
+  .then(this.setState({ descricao: ''}))
+  .then(this.setState({msgErro: ''})) //tentativa desafio 3
 }
 
 atualizar = async (desejo) => {
@@ -52,6 +64,17 @@ atualizar = async (desejo) => {
     })
     console.log(this.state.idUsuario);
    }
+
+// tentativa desafio 2 abaixo
+
+ atualizarIdLista = async (desejo) => {
+    await this.setState({  
+      idUsuarioLista : desejo.target.value,
+    })
+    console.log(this.state.idUsuario);
+   }
+
+// tentativa desafio 2 acima
 
  excluirDesejo = (item) => {
   console.log('O desejo' + item.idDesejo + 'foi selecionado');
@@ -109,7 +132,7 @@ componentDidMount(){
                         <div class="CampoFormCadastro">
                             <label>Usuário</label>
                             <select onChange={this.atualizarId} value={this.state.idUsuario}>
-                                <option value={0}>Selecione o id do usuario desejado</option>
+                                <option value={0}>Selecione o email do usuario desejado</option>
                             {this.state.listaDesejos.map((desejo) => (
                             <option value={desejo.idUsuario}>{desejo.idUsuarioNavigation.email}</option>
                             ))}
@@ -118,11 +141,31 @@ componentDidMount(){
                     </div>
                     <button class="FormSubmit" type="submit">Cadastrar</button>
                 </form>
+
+                {/* tentativa desfio 3 abaixo */}
+
+                <p>{this.state.msgErro}</p>
+
+                {/* tentativa desfio 3 acima */}
+
             </div>
         </section>
         <section class="Lista">
             <div class="ContainerLista ContainerGrid">
                 <h2>Desejos</h2>
+
+                {/* // tentativa desafio 2 abaixo */}
+
+                <label>Usuário</label>
+                            <select onChange={this.atualizarIdLista} value={this.state.idUsuarioLista}>
+                                <option value={0}>Selecione o email do usuario desejado</option>
+                            {this.state.listaDesejos.map((desejo) => (
+                            <option value={desejo.idUsuario}>{desejo.idUsuarioNavigation.email}</option>
+                            ))}
+                            </select>
+                
+                {/* // tentativa desafio 2 acima */}
+
                 <table>
                     <thead>
                         <tr>
@@ -134,7 +177,8 @@ componentDidMount(){
                     </thead>
                     <tbody>
                     {
-                    this.state.listaDesejos.map((desejo) => {
+                        // .filter == tentativa desafio 2
+                    this.state.listaDesejos.filter(d => d.idUsuario == this.state.idUsuarioLista).map((desejo) => {
                       return(
                         <tr key={desejo.idDesejo}> 
                         <td>{desejo.descricao}</td>

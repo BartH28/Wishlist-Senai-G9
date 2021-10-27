@@ -199,7 +199,7 @@ main{
     font-size: 20px;
 }
 
-.CampoFormCadastro select{
+select{
     width: 590px;
     height: 41px;
     border-radius: 10px;
@@ -236,6 +236,13 @@ main{
     font-family: 'Questrial', sans-serif;
     font-weight: 400;
     margin-bottom: 30px;
+}
+
+.ContainerLista label{
+    color: #282D47;
+    font-family: 'Questrial', sans-serif;
+    font-weight: 400;
+    font-size: 35px;
 }
 
 .ContainerLista table{
