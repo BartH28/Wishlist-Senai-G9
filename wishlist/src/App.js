@@ -2,6 +2,7 @@ import './App.css';
 import logo from '../src/assets/splotch-solid 1.png'
 import icon from '../src/assets/trash.ico'
 import {Component} from "react";
+import axios from 'axios';
 
 class App extends Component{
   constructor(props){
@@ -48,7 +49,6 @@ cadastrarDesejos = (desejo) => {
   .catch(erro => this.setState({msgErro: erro}))  //retorno do catch: tentativa desafio 3
   .then(this.buscarDesejos)
   .then(this.setState({ descricao: ''}))
-  .then(this.setState({msgErro: ''})) //tentativa desafio 3
 }
 
 atualizar = async (desejo) => {
@@ -95,6 +95,12 @@ atualizar = async (desejo) => {
 
 componentDidMount(){
   this.buscarDesejos()
+  axios.get('http://localhost:5000/api/desejo/')
+  .then(response => this.setState({listaDesejos: response.data}))
+  .catch(err => { 
+      this.setState({msgErro: err.message});
+    })
+
 }
 
   render() {
@@ -140,11 +146,14 @@ componentDidMount(){
                         </div>
                     </div>
                     <button class="FormSubmit" type="submit">Cadastrar</button>
+ 
+                   
                 </form>
 
                 {/* tentativa desfio 3 abaixo */}
 
-                <p>{this.state.msgErro}</p>
+                { this.state.errorMessage &&
+                <h3 className="error"> { this.state.errorMessage } </h3> }
 
                 {/* tentativa desfio 3 acima */}
 
@@ -157,7 +166,7 @@ componentDidMount(){
                 {/* // tentativa desafio 2 abaixo */}
 
                 <label>Usuário</label>
-                            <select onChange={this.atualizarIdLista} value={this.state.idUsuarioLista}>
+                            <select className="slc" onChange={this.atualizarIdLista} value={this.state.idUsuarioLista}>
                                 <option value={0}>Selecione o email do usuario desejado</option>
                             {this.state.listaDesejos.map((desejo) => (
                             <option value={desejo.idUsuario}>{desejo.idUsuarioNavigation.email}</option>
@@ -177,18 +186,20 @@ componentDidMount(){
                     </thead>
                     <tbody>
                     {
-                        // .filter == tentativa desafio 2
-                    this.state.listaDesejos.filter(d => d.idUsuario == this.state.idUsuarioLista).map((desejo) => {
-                      return(
-                        <tr key={desejo.idDesejo}> 
-                        <td>{desejo.descricao}</td>
-                        <td>{desejo.idUsuarioNavigation.email}</td>
-                        <td>{new Intl.DateTimeFormat('pt-BR', {timeZone: 'UTC'}).format(new Date(desejo.dataDesejo))}</td>
-                        <td><button onClick={() => this.excluirDesejo(desejo)}><img src={icon} alt={"icon"} className="icon"/></button></td>
-                        </tr>
-                     )
-                    })
-                  }
+                  
+  
+    // .filter == tentativa desafio 2
+this.state.listaDesejos.filter(d => d.idUsuario == this.state.idUsuarioLista).map((desejo) => {
+  return(
+    <tr key={desejo.idDesejo}> 
+    <td>{(desejo.descricao)}</td>
+    <td>{desejo.idUsuarioNavigation.email}</td>
+    <td>{new Intl.DateTimeFormat('pt-BR', {timeZone: 'UTC'}).format(new Date(desejo.dataDesejo))}</td>
+    <td><button onClick={() => this.excluirDesejo(desejo)}><img src={icon} alt={"icon"} className="icon"/></button></td>
+    </tr>
+ )
+})
+}
                     </tbody>
                 </table>
             </div>

@@ -206,6 +206,10 @@ select{
     border: 1px solid #282D47;
 }
 
+.slc{
+    margin-bottom: 20px;
+}
+
 .FormSubmit{
     padding: 30px;
     background-color: #3952CC;

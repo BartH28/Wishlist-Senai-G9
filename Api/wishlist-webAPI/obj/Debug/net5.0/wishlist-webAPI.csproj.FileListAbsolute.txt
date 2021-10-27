@@ -131,3 +131,4 @@ C:\Users\Batat\Desktop\Wishlist-Senai-G9\Api\wishlist-webAPI\obj\Debug\net5.0\wi
 C:\Users\Batat\Desktop\Wishlist-Senai-G9\Api\wishlist-webAPI\obj\Debug\net5.0\wishlist-webAPI.genruntimeconfig.cache
 C:\Users\Batat\Desktop\Wishlist-Senai-G9\Api\wishlist-webAPI\bin\Debug\net5.0\wishlist-webAPI.xml
 C:\Users\Batat\Desktop\Wishlist-Senai-G9\Api\wishlist-webAPI\obj\Debug\net5.0\wishlist-webAPI.xml
+C:\Users\Batat\Desktop\Wishlist-Senai-G9\Api\wishlist-webAPI\obj\Debug\net5.0\wishlist-webAPI.csproj.CopyComplete
