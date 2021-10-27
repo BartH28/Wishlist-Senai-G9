@@ -9,6 +9,8 @@ class App extends Component{
       this.state = {
        listaDesejos: [],
        descricao: '',
+       data: Date,
+       idUsuario: 0
       }
   };
 
@@ -16,7 +18,7 @@ class App extends Component{
     console.log('Fazer a chamada para a API')
     fetch('http://localhost:5000/api/desejo')
     .then(r => r.json()) 
-    .then(data => this.setState({listaDesejos: data}) )  
+    .then(data => this.setState({listaDesejos: data}) ) 
     .catch(erro => console.log(erro)) 
 }
 
@@ -25,7 +27,7 @@ cadastrarDesejos = (desejo) => {
 
   fetch('http://localhost:5000/api/desejo', {
       method: 'POST', 
-      body: JSON.stringify({ descricao : this.state.descricao}),
+      body: JSON.stringify({ descricao : this.state.descricao, idUsuario: this.state.idUsuario}),
       headers :{
           "Content-Type" : "application/json"
       }
@@ -34,15 +36,22 @@ cadastrarDesejos = (desejo) => {
   .then(console.log("desejo cadastrado."))
   .catch(erro => console.log(erro))  
   .then(this.buscarDesejos)
-  .then(this.setState({ descricao: ''}))
+  .then(this.setState({ descricao: ''})) 
 }
 
 atualizar = async (desejo) => {
   await this.setState({  
-    descricao : desejo.target.value   
+    descricao : desejo.target.value,
   })
   console.log(this.state.descricao);
  }
+
+ atualizarId = async (desejo) => {
+    await this.setState({  
+      idUsuario : desejo.target.value,
+    })
+    console.log(this.state.idUsuario);
+   }
 
  excluirDesejo = (item) => {
   console.log('O desejo' + item.idDesejo + 'foi selecionado');
@@ -99,7 +108,12 @@ componentDidMount(){
                         </div>
                         <div class="CampoFormCadastro">
                             <label>Usuário</label>
-                            <select></select>
+                            <select onChange={this.atualizarId} value={this.state.idUsuario}>
+                                <option value={0}>Selecione o id do usuario desejado</option>
+                            {this.state.listaDesejos.map((desejo) => (
+                            <option value={desejo.idUsuario}>{desejo.idUsuarioNavigation.email}</option>
+                            ))}
+                            </select>
                         </div>
                     </div>
                     <button class="FormSubmit" type="submit">Cadastrar</button>
